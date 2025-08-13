@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Important pages for crawlers
+Allow: /
+Allow: /products
+Allow: /services
+Allow: /contact
+Allow: /about
+
+# Disallow admin or sensitive areas (none in this case)
+# Disallow: /admin
+
+Sitemap: https://greenvalleyvegetables.com/sitemap.xml
+
+# Search engine specific rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl-delay for other bots (1 second)
+Crawl-delay: 1

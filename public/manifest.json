@@ -1,0 +1,21 @@
+{
+  "name": "KPN Vegetables - Fresh Wholesale & Retail Kozhikode",
+  "short_name": "KPN Vegetables",
+  "description": "Premium quality fresh vegetables for wholesale and retail in Kozhikode, Kerala. Daily fresh produce from local farms.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2D5016",
+  "theme_color": "#4CAF50",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
