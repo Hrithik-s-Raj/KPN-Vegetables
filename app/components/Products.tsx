@@ -21,7 +21,7 @@ interface ProductsProps {
 }
 
 const Products = ({ language }: ProductsProps) => {
-  const [vegetables, setVegetables] = useState<Vegetable[]>([]);
+  const [vegetables, setVegetables] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -135,7 +135,7 @@ const Products = ({ language }: ProductsProps) => {
   }, []);
 
   const filteredAndSortedVegetables = useMemo(() => {
-    let filtered = vegetables.filter(vegetable => {
+    let filtered = vegetables.filter((vegetable:any) => {
       const matchesSearch = vegetable.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           vegetable.malayalamName.includes(searchTerm) ||
                           vegetable.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -144,7 +144,7 @@ const Products = ({ language }: ProductsProps) => {
       return matchesSearch && matchesCategory;
     });
 
-    filtered.sort((a, b) => {
+    filtered.sort((a:any, b:any) => {
       switch (sortBy) {
         case 'price':
           return a.pricePerKg - b.pricePerKg;
@@ -159,7 +159,15 @@ const Products = ({ language }: ProductsProps) => {
   }, [vegetables, searchTerm, selectedCategory, sortBy]);
 
   const categories = useMemo(() => {
-    const uniqueCategories = [...new Set(vegetables.map(v => v.category))];
+    // const uniqueCategories = [...new Set(vegetables.map(v => v.category))];
+    const uniqueCategories = vegetables
+  .map(v => v.category)
+  .reduce((acc: string[], category) => {
+    if (!acc.includes(category)) {
+      acc.push(category);
+    }
+    return acc;
+  }, []);
     return uniqueCategories.sort();
   }, [vegetables]);
 
